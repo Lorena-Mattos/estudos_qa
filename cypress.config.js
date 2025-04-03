@@ -1,16 +1,13 @@
 const { defineConfig } = require('cypress')
-
-module.exports = defineConfig({
+ 
+ module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://example.cypress.io',
-    specPattern: 'cypress/e2e/**/*.spec.js',
-    supportFile: 'cypress/support/e2e.js',
-    viewportWidth: 1280,
-    viewportHeight: 720,
-    defaultCommandTimeout: 5000,
-    video: false,
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+    specPattern: 'tests/cypress/e2e/**/*.spec.js',
+    supportFile: false, // Desativa o suporte a arquivos globais
+    fixturesFolder: 'tests/cypress/fixtures',
+    downloadsFolder: 'tests/cypress/downloads',
+    video: true,
+    screenshotOnRunFailure: true
   }
-}) 
+});
