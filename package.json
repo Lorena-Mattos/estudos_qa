@@ -1,0 +1,24 @@
+{
+  "name": "estudos_qa",
+  "version": "1.0.0",
+  "description": "Este projeto contém exemplos práticos dos diferentes tipos de testes que um QA realiza no dia a dia.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lorena-Mattos/estudos_qa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lorena-Mattos/estudos_qa/issues"
+  },
+  "homepage": "https://github.com/Lorena-Mattos/estudos_qa#readme"
+}
