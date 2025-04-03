@@ -2,6 +2,11 @@
 
 Este projeto contém exemplos práticos dos diferentes tipos de testes que um QA realiza no dia a dia.
 
+## Documentação
+
+- [Manual Completo de Testes](manual_testes.md) - Guia detalhado com explicações passo a passo de cada tipo de teste
+- [Guia de Execução de Testes](docs/execucao_testes.md) - Instruções para configurar e executar os diferentes tipos de testes
+
 ## Estrutura do Projeto
 
 ```
