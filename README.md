@@ -1,152 +1,150 @@
+# Exemplos Práticos de Testes QA
 
-# Roadmap para QA (Quality Assurance) - Passo a Passo Prático
+Este projeto contém exemplos práticos dos diferentes tipos de testes que um QA realiza no dia a dia.
 
-## ✨ 1. Fundamentos de QA
+## Estrutura do Projeto
 
-### ✅ O que é QA e por que é importante?
-- QA (Quality Assurance) garante que software funciona corretamente antes de ser entregue.
-- Previne erros e melhora a experiência do usuário.
-- QA pode ser **manual** (testes feitos por pessoas) ou **automático** (testes feitos por código).
-
-### ✅ Tipos de Testes
-1. **Testes Manuais**: Feitos por um tester interagindo com o sistema.
-2. **Testes Automatizados**: Feitos por scripts que verificam o sistema automaticamente.
-3. **Testes de Unidade**: Testam partes pequenas do código separadamente.
-4. **Testes de Integração**: Testam módulos diferentes funcionando juntos.
-5. **Testes Funcionais**: Testam se o sistema atende aos requisitos.
-6. **Testes de Regressão**: Garantem que mudanças não quebram funcionalidades antigas.
-7. **Testes de Carga**: Verificam o desempenho do sistema com muitos usuários.
-8. **Testes End-to-End (E2E)**: Testam um fluxo completo do usuário, desde o início até o fim.
-
-### ✅ Ferramentas Essenciais
-- **Selenium** (para automação web, você já conhece!)
-- **Cypress** (para testes end-to-end mais modernos)
-- **PyTest** (para executar testes automatizados)
-- **Postman** (para testar APIs)
-- **JMeter** (para testes de desempenho)
-- **REST Assured** (para testes de API em Java)
-- **CI/CD com GitHub Actions, Jenkins, GitLab CI** (para rodar testes automáticos)
-
-## ✨ 2. Testes Manuais
-
-### ✅ Exercício prático:
-1. Escolha um site simples (exemplo: [https://www.google.com](https://www.google.com)).
-2. Tente usar o site e encontrar possíveis problemas (botões quebrados, falhas de layout, etc.).
-3. Registre os problemas em uma planilha com:
-   - Passos para reproduzir o erro
-   - O que deveria acontecer
-   - O que realmente aconteceu
-
-## ✨ 3. Testes Automatizados com Python e Selenium
-
-### ✅ Instalando Selenium
-```bash
-pip install selenium
+```
+.
+├── src/                    # Código fonte da aplicação
+├── tests/                  # Testes
+│   ├── manual/            # Exemplos de testes manuais
+│   ├── automated/         # Testes automatizados
+│   ├── unit/              # Testes de unidade
+│   ├── integration/       # Testes de integração
+│   ├── functional/        # Testes funcionais
+│   ├── regression/        # Testes de regressão
+│   ├── load/              # Testes de carga
+│   └── e2e/               # Testes end-to-end
+└── docs/                  # Documentação
 ```
 
-### ✅ Primeiro Teste Automatizado
+## Exemplos de Testes
+
+### 1. Testes Manuais
+**Cenário**: Teste de login em um e-commerce
+- Abrir o navegador e acessar a página de login
+- Inserir credenciais válidas (usuário: teste@email.com, senha: 123456)
+- Verificar se o login é bem-sucedido
+- Verificar se o usuário é redirecionado para a página inicial
+- Verificar se o nome do usuário aparece no cabeçalho
+
+### 2. Testes Automatizados
+**Cenário**: Teste automatizado de adição ao carrinho
 ```python
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-# Abrir o navegador
-driver = webdriver.Chrome()
-driver.get("https://www.google.com")
-
-# Encontrar o campo de busca e digitar algo
-search_box = driver.find_element(By.NAME, "q")
-search_box.send_keys("QA Selenium")
-search_box.submit()
-
-# Fechar o navegador
-driver.quit()
+def test_add_to_cart():
+    # Abrir navegador
+    driver = webdriver.Chrome()
+    driver.get("https://ecommerce.com")
+    
+    # Buscar produto
+    search_box = driver.find_element(By.ID, "search")
+    search_box.send_keys("Smartphone")
+    search_box.submit()
+    
+    # Adicionar ao carrinho
+    add_to_cart_button = driver.find_element(By.CLASS_NAME, "add-to-cart")
+    add_to_cart_button.click()
+    
+    # Verificar mensagem de sucesso
+    assert "Produto adicionado ao carrinho" in driver.page_source
 ```
 
-**Desafio:** Execute esse script e veja os resultados!
-
-## ✨ 4. Testes End-to-End com Cypress
-
-### ✅ Instalando Cypress
-```bash
-npm install cypress --save-dev
+### 3. Testes de Unidade
+**Cenário**: Teste da classe CarrinhoDeCompras
+```python
+def test_calcular_total_carrinho():
+    carrinho = CarrinhoDeCompras()
+    carrinho.adicionar_item(Produto("Smartphone", 1000))
+    carrinho.adicionar_item(Produto("Capa", 50))
+    
+    assert carrinho.calcular_total() == 1050
 ```
 
-### ✅ Criando um Teste Cypress
+### 4. Testes de Integração
+**Cenário**: Teste da integração entre Carrinho e Pagamento
+```python
+def test_processar_pagamento():
+    carrinho = CarrinhoDeCompras()
+    pagamento = SistemaDePagamento()
+    
+    carrinho.adicionar_item(Produto("Smartphone", 1000))
+    resultado = pagamento.processar_pagamento(carrinho, "1234567890123456")
+    
+    assert resultado.sucesso == True
+    assert carrinho.esta_vazio() == True
+```
+
+### 5. Testes Funcionais
+**Cenário**: Teste do fluxo completo de compra
+1. Login do usuário
+2. Busca de produto
+3. Adição ao carrinho
+4. Aplicação de cupom de desconto
+5. Seleção de método de pagamento
+6. Confirmação da compra
+7. Verificação do e-mail de confirmação
+
+### 6. Testes de Regressão
+**Cenário**: Verificação após atualização do sistema de pagamento
+- Testar todas as formas de pagamento existentes
+- Verificar se os descontos ainda funcionam
+- Confirmar se o processamento de cartões continua funcionando
+- Validar se as notificações de pagamento são enviadas
+
+### 7. Testes de Carga
+**Cenário**: Teste de performance durante Black Friday
+```python
+def test_carga_simultanea():
+    # Simular 1000 usuários acessando simultaneamente
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
+        futures = [executor.submit(realizar_compra) for _ in range(1000)]
+        resultados = [f.result() for f in futures]
+    
+    # Verificar tempos de resposta
+    assert all(r.tempo_resposta < 2.0 for r in resultados)
+```
+
+### 8. Testes End-to-End (E2E)
+**Cenário**: Fluxo completo de compra com Cypress
 ```javascript
-describe('Teste de Busca no Google', () => {
-  it('Deve buscar algo no Google', () => {
-    cy.visit('https://www.google.com');
-    cy.get('input[name="q"]').type('QA Cypress{enter}');
-    cy.contains('QA Cypress');
-  });
-});
+describe('Fluxo de Compra', () => {
+  it('Deve completar uma compra com sucesso', () => {
+    cy.visit('/')
+    cy.login('usuario@teste.com', 'senha123')
+    cy.buscarProduto('Smartphone')
+    cy.adicionarAoCarrinho()
+    cy.irParaCarrinho()
+    cy.aplicarCupom('BLACKFRIDAY')
+    cy.selecionarPagamento('cartao')
+    cy.preencherDadosCartao()
+    cy.confirmarCompra()
+    cy.verificarEmailConfirmacao()
+  })
+})
 ```
 
-**Rodando o teste:**
-```bash
-npx cypress open
-```
+## Outros Tipos de Testes Importantes
 
-## ✨ 5. Testes de API com Postman e Python
+### 9. Testes de Segurança
+**Cenário**: Teste de vulnerabilidades comuns
+- Teste de injeção SQL
+- Verificação de XSS (Cross-Site Scripting)
+- Validação de autenticação
+- Teste de permissões de acesso
 
-### ✅ Testando uma API Manualmente
-1. Baixe e instale o **Postman**.
-2. Teste uma API pública, como:
-   - URL: `https://jsonplaceholder.typicode.com/posts/1`
-   - Método: GET
+### 10. Testes de Usabilidade
+**Cenário**: Avaliação da experiência do usuário
+- Tempo para completar tarefas comuns
+- Facilidade de navegação
+- Clareza das mensagens de erro
+- Acessibilidade (WCAG)
 
-### ✅ Testando API com Python (usando Requests)
-```python
-import requests
-
-response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
-print(response.json())
-```
-
-**Desafio:** Teste outras rotas dessa API e veja os resultados.
-
-## ✨ 6. Criando Casos de Teste
-
-### ✅ Como escrever um caso de teste?
-1. **ID do Caso**: CT-001
-2. **Título**: Testar login com credenciais válidas
-3. **Passos**:
-   - Acessar `https://exemplo.com/login`
-   - Digitar "usuario@example.com" no campo de e-mail
-   - Digitar "senha123" no campo de senha
-   - Clicar no botão "Entrar"
-4. **Resultado esperado**: Login bem-sucedido.
-5. **Resultado real**: ??? (Preencher ao testar)
-6. **Status**: Aprovado/Reprovado
-
-**Desafio:** Crie um caso de teste para testar o cadastro de usuário.
-
-## ✨ 7. CI/CD para QA
-
-### ✅ Rodando Testes Automaticamente com GitHub Actions
-```yaml
-name: Run Tests
-on: [push]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm install
-      - name: Run Cypress tests
-        run: npx cypress run
-```
-
-## 🚀 Conclusão
-Esse roadmap cobre os primeiros passos para você iniciar na área de QA, de forma prática e direta, incluindo testes E2E e Cypress. 
-
-**O que fazer agora?**
-- Siga os passos e execute os exemplos práticos.
-- Resolva os desafios propostos.
-- Me pergunte se tiver dúvidas!
-
-💪 Bora praticar e se tornar um QA ninja!
+### 11. Testes de Compatibilidade
+**Cenário**: Verificação em diferentes ambientes
+- Teste em diferentes navegadores (Chrome, Firefox, Safari)
+- Teste em diferentes dispositivos (desktop, mobile, tablet)
+- Teste em diferentes sistemas operacionais
+- Teste em diferentes resoluções de tela
 
 
