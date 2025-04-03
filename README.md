@@ -147,4 +147,86 @@ describe('Fluxo de Compra', () => {
 - Teste em diferentes sistemas operacionais
 - Teste em diferentes resoluções de tela
 
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+A licença MIT é uma licença de software livre que permite que qualquer pessoa use, copie, modifique, mescle, publique, distribua, sublicencie e/ou venda cópias do software, desde que inclua o aviso de copyright e a permissão em todas as cópias ou partes substanciais do software.
+
+### O que você pode fazer com este projeto:
+- Usar em projetos comerciais
+- Modificar e adaptar para suas necessidades
+- Distribuir versões modificadas
+- Usar em projetos privados
+
+### O que você deve fazer:
+- Manter o aviso de copyright original
+- Incluir uma cópia da licença MIT
+- Dar crédito aos autores originais
+
+## Como Colaborar
+
+Este projeto é aberto para contribuições da comunidade. Se você quiser contribuir, siga estas etapas:
+
+1. **Fork do Projeto**
+   - Faça um fork do repositório no GitHub
+   - Clone o fork para sua máquina local
+
+2. **Criar uma Branch**
+   ```bash
+   git checkout -b feature/nova-funcionalidade
+   ```
+
+3. **Fazer as Alterações**
+   - Adicione novos exemplos de testes
+   - Melhore a documentação existente
+   - Corrija erros ou bugs
+   - Adicione novos tipos de testes
+
+4. **Commit das Alterações**
+   ```bash
+   git commit -m "Adiciona exemplo de teste de segurança"
+   ```
+
+5. **Push para o Fork**
+   ```bash
+   git push origin feature/nova-funcionalidade
+   ```
+
+6. **Abrir um Pull Request**
+   - Vá para o repositório original no GitHub
+   - Clique em "New Pull Request"
+   - Selecione sua branch
+   - Descreva suas alterações
+   - Aguarde a revisão
+
+### Tipos de Contribuições Bem-vindas:
+- **Documentação**
+  - Melhorar explicações existentes
+  - Adicionar mais exemplos
+  - Traduzir para outros idiomas
+
+- **Código**
+  - Adicionar novos tipos de testes
+  - Melhorar exemplos existentes
+  - Adicionar testes para novas tecnologias
+
+- **Issues**
+  - Reportar bugs
+  - Sugerir melhorias
+  - Pedir ajuda com dúvidas
+
+### Boas Práticas para Contribuições:
+1. Siga o padrão de código existente
+2. Documente suas alterações
+3. Adicione testes para novas funcionalidades
+4. Mantenha os commits pequenos e focados
+5. Escreva mensagens de commit claras
+
+### Precisa de Ajuda?
+- Abra uma issue no GitHub
+- Participe das discussões
+- Consulte a documentação
+- Entre em contato com os mantenedores
+
 
