@@ -29,11 +29,11 @@ Este manual foi criado para ajudar iniciantes na área de Qualidade de Software 
 
 1. **Python e suas bibliotecas**
 ```bash
-pip install selenium==4.15.2
-pip install locust==2.16.1
-pip install pytest==7.4.3
-pip install pytest-selenium==4.0.0
-pip install webdriver-manager==3.8.6
+pip install selenium==4.30.0
+pip install locust==2.33.2
+pip install pytest==8.3.5
+pip install pytest-selenium==4.1.0
+pip install webdriver-manager==4.0.2
 ```
 
 2. **Node.js e Cypress**
